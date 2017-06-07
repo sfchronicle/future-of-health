@@ -15,16 +15,30 @@
   </head>
 
   <%= !json.project.embedded ? "<body>" : "<body is='responsive-body'>" %>
+  <div class="container">
     <% json.Sheet1.forEach(function(d,idx){ %>
     <div class="inline-img">
       <img src="<%=d.Image%>"></img>
+      <div class="inline-description">
+        <p class="headline">
+          <%=d.Headline%>
+        </p>
+        <p class="byline">
+          By <%=d.Author%>
+        </p>
+        <p class="blurb">
+          <%=d.Deck%>
+        </p>
+      </div>
     </div>
-    <div class="inline-description">
-      <%=d.Headline%>
-    </div>
+
+
+
+
 
     <%  console.log(d); %>
     <% }); %>
+  </div>
 
 
 
