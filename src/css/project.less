@@ -1,6 +1,17 @@
 .container {
+	margin-left: 2em;
+	margin-right: 2em;
 	.flex-wrap(wrap);
 	.display-flex;
+
+}
+
+.header {
+	@media @mobile {
+		.flex(0 0 100%);
+	}
+	margin-bottom: 2em;
+
 }
 
 .inline-img {
@@ -8,17 +19,62 @@
 	@media @mobile {
 		.flex(0 0 100%);
 	}
-	padding-left: 1.5em;
-	padding-right: 1.5em;
-	margin-bottom: 0em;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin: 1em auto;
 }
 
 img {
 	width: 100%;
+	margin-bottom: .5em;
+}
+
+.header_image {
+	z-index: -1;
+	position: relative;
+}
+
+.headertext {
+	color: white;
+	position: absolute;
+	text-align: right;
+    top: 24em;
+    right: 4em;
+    left: 24em;
+    background-color: rgba(255, 255, 255, 0.2);
+    @media @width1250{
+    	font-size: .8em;
+    	position: static;
+    	text-align: center;
+    	color: black;
+    }
+    @media @width1600{
+   		 top: 30em;
+    }    
+}
+
+h1.headline {
+    font-family: 'AntennaBlack', sans-serif;
+    font-size: 300%;
+    line-height: 100%;
+    font-weight: 400;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+h3 {
+    font-family: 'AntennaRegular', sans-serif;
+    font-size: 150%;
+    line-height: 120%;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 50px;
+    font-weight: 100;
 }
 
 .headline {
 	font-family: Pierpont-Bold, serif;
+	font-size: 24px;
 	line-height: 25px;
 	padding: 0px;
 	margin-bottom: .2em;
@@ -39,6 +95,17 @@ img {
     padding: 0px;
 }
 
+a {
+	color: black;
+}
+
+a.author-link {
+	color: black;
+	&:hover {
+    color: red;
+  }
+}
+
 a.continue{
 	font-family: Georgia Bold Italic, serif;
     font-weight: normal;
@@ -46,4 +113,14 @@ a.continue{
     color: #222;
     font-size: 14px;
     line-height: 16px;
+    &:hover {
+    color: darken(@gray-blue,10%);
+  }
+}
+
+a.credits {
+    color: @gray-blue;
+    &:hover {
+    color: lighten(@gray-blue,20%);
+  }
 }

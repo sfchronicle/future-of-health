@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= json.project.seo_title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="__sync_contentCategory" content="meterA">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+
+    <%= !json.project.embedded ? t.include("partials/_paywall.html") : t.include("partials/_embedframe.html") %>
+
+    <%= t.include("partials/_head.html") %>
+
+  </head>
+
+  <%= !json.project.embedded ? "<body>" : "<body is='responsive-body'>" %>
+
+    <div class="outer">
+
+      <div class="hed">A history of medical imagining and scanning technology</div>
+
+      <div id="top"></div>
+
+      <div class="button-container">
+        <% csv._tricorder.forEach(function(section,idx){ %>
+          <% console.log(idx); %>
+          <% if (idx == 0) { %>
+            <div class="button selected" id="button<%=section.slug%>"><%=section.device%></div>
+          <% } else { %>
+            <div class="button" id="button<%=section.slug%>"><%=section.device%></div>
+          <% } %>
+        <% }) %>
+      </div>
+
+      <% csv._tricorder.forEach(function(section,idx){ %>
+
+        <% if (idx == 0) { %>
+          <div class="section-emma selected" id="section<%=section.slug%>">
+        <% } else { %>
+          <div class="section-emma" id="section<%=section.slug%>">
+        <% } %>
+
+          <div class="section-title"><%=section.device%></div>
+
+          <% if (section.grid) { %>
+            <% var photo = [section.grid].toString().split(','); %>
+            <% console.log(photo); %>
+            <div class="grid-container">
+              <div class="grid"><img src=<%=photo[0]%>></div>
+              <div class="grid"><img src=<%=photo[1]%>></div>
+              <div class="credit"><%=section.credit%> </div>
+
+            </div>
+          <% } else { %>
+          <div class="inline-img">
+            <img src="<%=section.photo%>">
+            <div class="credit"><%=section.credit%> </div>
+          </div>
+          <% } %>
+
+          <div class="sub-title">Date</div>
+          <div class="sub-section"><%=section.date%></div>
+
+          <div class="sub-title">Tech</div>
+          <div class="sub-section"><%=section.tech%></div>
+
+          <!-- <div class="author">—  <%=section.author%>  &bull; <a href="mailto:<%=section.author_email%>"><%=section.author_email%></a>   &bull; <a href = "https://twitter.com/<%=section.author_twitter%>" target="_blank">@<%=section.author_twitter%></a></div> -->
+
+        </div>
+
+      <% }); %>
+
+
+      <div class="divider"></div>
+
+      <div class="credit-jgu">
+        <div class="entry">Interactive Producer: Jackie Gu  &bull; <a href="mailto:eoneill@sfchronicle.com">jgu@sfchronicle.com</a>   &bull; <a href = "https://twitter.com/jqlngu" target="_blank">@jqlngu</a></div>
+      </div>
+
+
+    </div>
+
+    <script src="../interactive_app.js" async></script>
+    <script>
+      var pymChild = new pym.Child({polling: 500});
+    </script>
+    <%= t.include("partials/_helloSFC.html") %>
+
+  </body>
+</html>

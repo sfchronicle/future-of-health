@@ -15,27 +15,45 @@
   </head>
 
   <%= !json.project.embedded ? "<body>" : "<body is='responsive-body'>" %>
+
+
+  <div class="header">
+    <img src="http://ww4.hdnux.com/photos/61/56/74/13037335/3/1536x1536.jpg" class="header_image">
+    <div class="headertext">
+      <h1 class="headline">The future of health</h1>
+      <h3 class="deck">Someday soon, technology will keep you out
+of the hospital</h3>
+    </div>
+  </div>
+
   <div class="container">
     <% json.Sheet1.forEach(function(d,idx){ %>
+    
     <div class="inline-img">
-      <img src="<%=d.Image%>"></img>
+      <a href="<%=d.Link%>"><img src="http://ww4.hdnux.com/photos/61/50/16/<%=d.Image%>/3/premium_landscape.jpg"></img></a>
       <div class="inline-description">
-        <p class="headline">
-          <%=d.Headline%>
-        </p>
+        <a href="<%=d.Link%>"><p class="headline"><%=d.Headline%></p></a>
         <p class="article-byline">
-          By <%=d.Author%>
+          By <a href="<%=d.AuthorLink%>" class="author-link"><%=d.Author%></a>
         </p>
-        <p class="blurb">
-          <%=d.Deck%>
-        </p>
-        <a href="www.google.com" class="continue"> Continue Reading</a>
+        <a href="<%=d.Link%>"><p class="blurb"><%=d.Deck%></p></a>
+        <a href="<%=d.Link%>" class="continue"> Continue Reading</a>
       </div>
     </div>
-
-    <%  console.log(d); %>
     <% }); %>
   </div>
+
+  <div id="credits">
+    <div class="divider"></div>
+    <div class="credits">
+    Photographer: Michael Macor • <a href="mailto:mmacor@sfchronicle.com" class="credits">mmacor@sfchronicle.com</a> • <a href="https://twitter.com/michaelmacor" class="credits">@michaelmacor</a>
+    <br>
+    Assistant business editor: Kate Galbraith • <a href="mailto:kgalbraith@sfchronicle.com" class="credits">kgalbraith@sfchronicle.com</a> • <a href="https://twitter.com/KateGalbraith" class="credits">@KateGalbraith</a>
+    <br>
+    Interactives producer: Jackie Gu • <a href="mailto:jgu@sfchronicle.com" class="credits">jgu@sfchronicle.com</a> • <a href="https://twitter.com/jqlngu" class="credits">@jqlngu</a>
+    </div>
+  </div>
+
 
     <script src="app.js" async></script>
     <%= t.include("partials/_helloSFC.html") %>
