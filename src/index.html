@@ -28,16 +28,16 @@ of the hospital</h3>
 
   <div class="container">
     <% json.Sheet1.forEach(function(d,idx){ %>
-    
+
     <div class="inline-img">
-      <a href="<%=d.Link%>"><img src="http://ww4.hdnux.com/photos/61/50/16/<%=d.Image%>/3/premium_landscape.jpg"></img></a>
+      <a href="<%=d.Link%>" target="_parent"><img src="http://ww4.hdnux.com/photos/61/50/16/<%=d.Image%>/3/premium_landscape.jpg"></img></a>
       <div class="inline-description">
         <a href="<%=d.Link%>"><p class="headline"><%=d.Headline%></p></a>
         <p class="article-byline">
           By <a href="<%=d.AuthorLink%>" class="author-link"><%=d.Author%></a>
         </p>
-        <a href="<%=d.Link%>"><p class="blurb"><%=d.Deck%></p></a>
-        <a href="<%=d.Link%>" class="continue"> Continue Reading</a>
+        <a href="<%=d.Link%>" target="_parent"><p class="blurb"><%=d.Deck%></p></a>
+        <a href="<%=d.Link%>" class="continue" target="_parent"> Continue Reading</a>
       </div>
     </div>
     <% }); %>
